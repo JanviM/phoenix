@@ -1,0 +1,67 @@
+﻿<div id="wrapper" class="login">
+    <div class="container">
+        <div class="dropdown lang-dropdown" lang-dropdown></div>
+        <div class="row welcome text-center">
+            <h1>
+                <img src="images/go-solo-liveu.png" />
+            </h1>
+            <h4>
+               {{'WELCOME' | translate}} 
+            </h4>
+        </div>
+        <div class="row">
+            <div class="login-panel ">
+                <div class="errormsg">
+                    <span id="errormsg" style="display:block;" class="text-center"></span>
+                </div>
+                <div class="panel-body">
+                    <form role="form" name="register">
+                        <fieldset>
+
+                            <div class="form-group">
+                                <input class="form-control" placeholder="{{'EMAIL' | translate}}" id="txtUsername" ng-model="username" autofocus ng-required="true" name="username">
+
+                                <span class="error" ng-show="register.username.$dirty && register.username.$invalid">
+                                    <span ng-show="register.username.$error.required">{{'USERNAMEREQUIRED' | translate}} </span>
+                                </span>
+
+                            </div>
+
+                            <div class="form-group">
+                                <input class="form-control" placeholder="{{'PASSWORD' | translate}}" id="txtPassword" type="password" ng-model="password" ng-required="true" name="password" ng-keyup="$event.keyCode == 13 ? SignIn() : null">
+                                <span class="error" ng-show="register.password.$dirty && register.password.$invalid">
+                                    <span ng-show="register.password.$error.required">{{'PASSWORDREQUIRED' | translate}}</span>
+                                </span>
+
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" id="btnLogin" ng-hide="isLoading" value="{{'LOGIN' | translate}}" class="btn btn-lg btn-primary btn-block" ng-click="SignIn()">{{'LOGIN' | translate}}</button>
+                                <button type="button" id="btnLoading" ng-show="isLoading" value="{{'LOADING' | translate}}" class=" btn btn-lg btn-danger btn-block" >{{'LOADING' | translate}}</button>
+                            </div>
+
+                        </fieldset>
+                        <div class="form-group text-center login-links">
+                            <p>
+                                <span class="labelTxt"> {{'NEWUSER' | translate}}</span> <a class="" ui-sref="register">{{'REGISTERHERE' | translate}}</a>
+                            </p>
+                            <p>
+                                <span class="labelTxt"> {{'FORGOTPASSWORD' | translate}}</span> <a href="#" ui-sref="forgotpassword">{{'CLICKHERE' | translate}}</a>
+</p>
+                            <p>
+                                <span class="labelTxt"> {{'NEEDSOLO' | translate}}</span>  <a href="http://shop.liveu.tv">{{'GETITHERE' | translate}}</a>
+</p>
+                            <p>
+                                <span class="labelTxt"> {{'HAVINGTROUBLE' | translate}}</span>  <a ui-sref="query">{{'GETHELPHERE' | translate}}</a>
+</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="version">{{'VERSION' | translate}} 0.3.0</div>
+    <div class="privacy">
+        <a href="https://shop.liveu.tv/pages/privacy-policy">{{'PRIVACYPOLICY' | translate}}</a>
+    </div>
+</div>
