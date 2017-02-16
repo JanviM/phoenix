@@ -1,0 +1,203 @@
+﻿<div id="wrapper" class="register">
+    <div class="container">
+        <div class="dropdown lang-dropdown" lang-dropdown></div>
+        <div class="row welcome text-center">
+            <h1>
+                <img src="images/go-solo-liveu.png" />
+            </h1>
+            <h4>
+                {{'WELCOME' | translate}}
+            </h4>
+            <p ng-hide="isSuccess" class="text-center">{{'REGISTERTEXT' | translate}}</p>
+            <div class="panel-body" ng-show="isSuccess">
+                <p class="text-center">
+                     {{'THANKYOUFORREGISTERING' | translate}}
+                </p>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="register-panel">
+
+
+                <div class="panel-body" ng-hide="isSuccess">
+
+                    <form role="form" name="register">
+                        <fieldset>
+
+
+                            <span class="col-lg-4 col-sm-4 txtlabel">{{'FNAME' | translate}} </span>
+                            <div class="col-lg-8 col-sm-8 ">
+                                <div class="form-group">
+                                    <input class="form-control capitalize"
+                                           placeholder="{{'FNAME' | translate}}"
+                                           ng-model="UserObj.firstname"
+                                           ng-model-options="{ updateOn:'blur'}"
+                                           name="fname"
+                                           type="text"
+                                           maxlength="255"
+                                           ng-minlength="3"
+                                           ng-required="true" autofocus>
+                                    <span class="success" ng-show="register.fname.$valid">
+                                        <i class="fa fa-check"></i>
+                                    </span>
+
+                                    <span class="error" ng-show="register.fname.$dirty && register.fname.$invalid">
+                                        <span ng-show="register.fname.$error.required">{{'FNAMEREQUIRED' | translate}}</span>
+                                        <span ng-show="register.fname.$error.minlength">{{'FNAMECHARACTERS' | translate}}</span>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <span class="col-lg-4 col-sm-4 txtlabel">{{'LNAME' | translate}} </span>
+                            <div class="col-lg-8 col-sm-8 ">
+                                <div class="form-group">
+                                    <input class="form-control capitalize"
+                                           placeholder="{{'LNAME' | translate}}"
+                                           ng-model-options="{ updateOn:'blur'}"
+                                           name="lname"
+                                           type="text"
+                                           ng-model="UserObj.lastname"
+                                           maxlength="255"
+                                           ng-minlength="3"
+                                           ng-required="true">
+
+                                    <span class="success" ng-show="register.lname.$valid">
+                                        <i class="fa fa-check"></i>
+                                    </span>
+
+                                    <span class="error" ng-show="register.lname.$dirty && register.lname.$invalid">
+                                        <span ng-show="register.lname.$error.required">{{'LNAMEREQUIRED' | translate}}</span>
+                                        <span ng-show="register.lname.$error.minlength">{{'LNAMECHARACTERS' | translate}}</span>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <span class="col-lg-4 col-sm-4 txtlabel">{{'EMAILADDRESS' | translate}} </span>
+                            <div class="col-lg-8 col-sm-8 ">
+                                <div class="form-group">
+                                    <input class="form-control"
+                                           placeholder="{{'EMAILADDRESS' | translate}}"
+                                           ng-model-options="{ updateOn:'blur'}"
+                                           id="txtEmail"
+                                           type="email"
+                                           ng-model="UserObj.email"
+                                           name="email"
+                                           ng-required="true"
+                                           maxlength="75"
+                                           ng-pattern="/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/">
+
+                                    <span class="success" ng-show="register.email.$valid">
+                                        <i class="fa fa-check"></i>
+                                    </span>
+
+                                    <span class="error" ng-show="register.email.$dirty && register.email.$invalid">
+                                        <span ng-show="register.email.$error.required">{{'EMAILREQUIRED' | translate}}</span>
+                                        <span ng-show="register.email.$error.email">{{'INVALIDEMAIL' | translate}}</span>
+                                        <span ng-show="register.email.$error.pattern">{{'INVALIDEMAIL' | translate}}</span>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <span class="col-lg-4 col-sm-4  txtlabel">{{'PHONENO' | translate}} </span>
+                            <div class="col-lg-8 col-sm-8 ">
+                                <div class="form-group">
+                                    <input class="form-control"
+                                           placeholder="{{'PHONENO' | translate}}"
+                                           name="phone"
+                                           type="tel"
+                                           ng-model="UserObj.phone"
+                                           ng-model-options="{ updateOn:'blur'}"
+                                           ng-required="true"
+                                           maxlength="15"
+                                           ng-pattern="/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/">
+
+                                    <span class="success" ng-show="register.phone.$valid">
+                                        <i class="fa fa-check"></i>
+                                    </span>
+
+                                    <span class="error" ng-show="register.phone.$dirty && register.phone.$invalid">
+                                        <span ng-show="register.phone.$error.required">{{'PHONENOREQUIRED' | translate}}</span>
+                                        <span ng-show="register.phone.$error.pattern">{{'PHONENOINVALID' | translate}}</span>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <span class="col-lg-4 col-sm-4 txtlabel">{{'PASSWORD' | translate}} </span>
+                            <div class="col-lg-8 col-sm-8 ">
+                                <div class="form-group">
+                                    <input class="form-control"
+                                           placeholder="{{'PASSWORD' | translate}}"
+                                           id="txtPassword"
+                                           type="password"
+                                           maxlength="128"
+                                           name="password"
+                                           ng-model="UserObj.password"
+                                           ng-model-options="{ updateOn:'blur'}"
+                                           ng-required="true"
+                                           ng-pattern="/^(?=.*[_$@#!&%.])(?=.*[^_$@#!&%.])(?=.*[0-9])(?=.*[a-zA-Z])[\w$@#!&%.]{8,128}$/">
+
+                                    <span class="error" ng-show="register.password.$error.pattern">
+                                        <span> {{'PASSWORDCHARACTERS' | translate}} </span>
+                                    </span>
+
+                                    <span class="success" ng-show="register.password.$valid">
+                                        <i class="fa fa-check"></i>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <span class="col-lg-4 col-sm-4  txtlabel">{{'CONFIRMPASSWORD' | translate}}</span>
+                            <div class="col-lg-8 col-sm-8 ">
+                                <div class="form-group">
+                                    <input class="form-control"
+                                           placeholder="{{'CONFIRMPASSWORD' | translate}}"
+                                           maxlength="128"
+                                           ng-model-options="{ updateOn:'blur'}"
+                                           id="txtPassword"
+                                           type="password"
+                                           name="confirmpassword"
+                                           ng-model="UserObj.confirmpassword"
+                                           ng-required="true">
+
+                                    <span class="success" ng-show='UserObj.confirmpassword ? compareValue(UserObj.confirmpassword) : null'>
+                                        <i class="fa fa-check"></i>
+                                    </span>
+
+                                    <span class="error" ng-hide='compareValue(UserObj.confirmpassword)'>{{'PASSSWORDONOTMATCH' | translate}}</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-8 col-sm-8  col-sm-push-4">
+                                <div class="form-group capchaDiv" ng-if="isMainLandChina">
+                                    <cap-js validate-cap="validateCap(value)"  id="captcha"></cap-js>
+                                    <span class="success" ng-show='!isinvalidcap'>
+                                        <i class="fa fa-check"></i>
+                                    </span>
+                                </div>
+                                <div class="form-group" ng-if="!isMainLandChina">
+                                    <div vc-recaptcha theme="light" ng-model="cap" on-create="createCallback(widgetId)" key="'6LfvgBITAAAAAKZZSXVrhPvFceB3mARvJLtOFZB9'"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8 col-sm-8 col-sm-push-4">
+                                <div class="form-group">
+                                    <input ng-hide="isLoading" type="submit"
+                                           id="btnLogin"
+                                           value="{{'SUBMIT'|translate}}"
+                                           class="btn btn-lg btn-primary btn-block"
+                                           ng-click="registerUser(UserObj)" />
+
+                                    <input type="button" id="btnLoading" ng-show="isLoading" value="{{'LOADING' | translate}}" class="btn btn-lg btn-danger btn-block" />
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </form>
+                </div>
+
+                <div class="form-group text-center login-links-register">
+                    <a class="" ui-sref="login">{{'GOBACK' | translate}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
